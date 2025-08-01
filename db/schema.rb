@@ -10,23 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_01_155031) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_01_162805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "foods", force: :cascade do |t|
-    t.string "name"
-    t.bigint "menu_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_foods_on_menu_id"
-  end
-
-  create_table "menus", force: :cascade do |t|
+  create_table "menus_tables", force: :cascade do |t|
     t.string "title"
+    t.text "foods"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_foreign_key "foods", "menus"
 end
