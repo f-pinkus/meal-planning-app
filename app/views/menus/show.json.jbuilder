@@ -1,1 +1,3 @@
-json.partial! "menus/menu", menu: @menu
+json.id @menu.id
+json.title @menu.title
+json.foods @menu.foods

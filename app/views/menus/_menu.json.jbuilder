@@ -1,3 +1,3 @@
-json.id menu.id
-json.title menu.title
-json.food menu.foods
+json.id @menu.id
+json.title @menu.title
+json.foods @menu.foods
