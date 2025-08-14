@@ -2,7 +2,8 @@ class MenusController < ApplicationController
   def index
     @menus = Menu.all
 
-    render :index
+    # render :index
+    render json: @menus
   end
 
   def create
@@ -11,13 +12,15 @@ class MenusController < ApplicationController
       foods: params[:foods]
     )
 
-    render :show
+    # render :show
+    render json: @menu
   end
 
   def show
     @menu = Menu.find_by(id: params[:id])
 
-    render :show
+    # render :show
+    render json: @menu
   end
 
   def update
@@ -28,7 +31,8 @@ class MenusController < ApplicationController
       foods: params[:foods] || @menu.foods
     )
 
-    render :show
+    # render :show
+    render json: @menu
   end
 
   def destroy
