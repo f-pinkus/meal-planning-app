@@ -3,5 +3,5 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   skip_before_action :verify_authenticity_token
   self.forgery_protection_origin_check = false
-  # protect_from_forgery with: :exception, unless: -> { request.format.json? }
+  protect_from_forgery with: :exception, unless: -> { request.format.json? }
 end
