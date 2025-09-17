@@ -6,7 +6,7 @@ class AiMenuGenerator
       messages: [
         {
           role: "user",
-          content: "Generate a menu in JSON format. Example: {\"title\":\"Sunday Supper\", \"foods\":\"chicken, rice, and soup\"}. Now do this: #{prompt}"
+          content: "Generate a menu as a JSON array of food names. Do not include any explanation or extra text. Only return valid JSON. Example: [\"Taco Night\", \"Homemade Pizza\", \"Pasta Bar\", \"Dessert\"]"
         }
       ]
     })
