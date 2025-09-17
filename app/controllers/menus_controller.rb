@@ -48,11 +48,11 @@ class MenusController < ApplicationController
     prompt = params[:prompt]
     generated_data = AiMenuGenerator.generate(prompt)
 
-    title = params[:title].presence || generated_data["title"]
+    title = params[:title].presence || generated_data["title"] || "Untitled Menu"
 
     @menu = current_user.menus.create(
       title: title,
-      foods: generated_data["foods"]
+      foods: generated_data["foods"] || []
     )
 
     render json: @menu
