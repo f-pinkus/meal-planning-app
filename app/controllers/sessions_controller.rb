@@ -1,26 +1,23 @@
 class SessionsController < ApplicationController
-
   def create
     user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      cookie = { value: user.id }
-      cookies.signed[:user_id] = cookie.merge(cookie_settings)
-      render json: { email: user.email, user_id: user.id }, status: :created
+
+    if user&.authenticate(params[:password])
+      session[:user_id] = user.id
+      render json: { message: "Logged in", user: user }
     else
-      render json: {}, status: :unauthorized
+      render json: { error: "Invalid email or password" }, status: :unauthorized
     end
   end
 
   def destroy
-    cookies.delete(:user_id, cookie_settings)
-    render json: { message: "Logged out successfully" }
+    session[:user_id] = nil
+    render json: { message: "Logged out" }
   end
 
-  private
-
   def cookie_settings
-    if Rails.env.test?
-      { httponly: true }
+    if Rails.env.development? || Rails.env.test?
+      { httponly: true, same_site: "None" }
     else
       { httponly: true, secure: true, same_site: "None" }
     end

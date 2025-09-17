@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+
   def index
     @menus = Menu.all
 
@@ -41,5 +42,19 @@ class MenusController < ApplicationController
     @menu.destroy
 
     render json: { message: "Menu deleted."}
+  end
+
+  def generate
+    prompt = params[:prompt]
+    generated_data = AiMenuGenerator.generate(prompt)
+
+    title = params[:title].presence || generated_data["title"]
+
+    @menu = current_user.menus.create(
+      title: title,
+      foods: generated_data["foods"]
+    )
+
+    render json: @menu
   end
 end

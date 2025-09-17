@@ -10,6 +10,15 @@
 # Ignore all environment files.
 /.env*
 
+# Ignore actual env files with secrets
+.env
+.env.development
+.env.test
+.env.production
+
+# But keep .env.example so teammates know what vars to set
+!.env.example
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
