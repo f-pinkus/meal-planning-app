@@ -42,21 +42,4 @@ class MenusController < ApplicationController
 
     render json: { message: "Menu deleted."}
   end
-<<<<<<< HEAD
-
-  def generate
-    prompt = params[:prompt]
-    generated_data = AiMenuGenerator.generate(prompt)
-
-    title = params[:title].presence || generated_data["title"] || "Untitled Menu"
-
-    @menu = current_user.menus.create(
-      title: title,
-      foods: generated_data["foods"] || []
-    )
-
-    render json: @menu
-  end
-=======
->>>>>>> parent of 3801c83 (add ai menu generator)
 end
