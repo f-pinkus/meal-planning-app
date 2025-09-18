@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   resources :menus
 
-  resources :menus do
-    post :generate, on: :collection
-  end
-
   post "/signup" => "users#create"
   delete "/users" => "users#destroy"
 

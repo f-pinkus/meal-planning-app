@@ -1,5 +1,4 @@
 class MenusController < ApplicationController
-
   def index
     @menus = Menu.all
 
@@ -43,6 +42,7 @@ class MenusController < ApplicationController
 
     render json: { message: "Menu deleted."}
   end
+<<<<<<< HEAD
 
   def generate
     prompt = params[:prompt]
@@ -57,4 +57,6 @@ class MenusController < ApplicationController
 
     render json: @menu
   end
+=======
+>>>>>>> parent of 3801c83 (add ai menu generator)
 end
